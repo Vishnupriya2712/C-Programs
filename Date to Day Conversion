@@ -1,0 +1,57 @@
+#include<stdio.h>
+int main()
+{
+    int dd,mm,yy,i,days=0;
+    printf("Enter the date: ");
+    scanf("%d/%d/%d",&dd,&mm,&yy);
+    printf("\n%d",dd);
+    printf("\n%d",mm);
+    printf("\n%d",yy);
+    for(i=1900;i<yy;i++)
+    {
+        if(i%400==0 || (i%4==0 && i%100!=0))
+             days+=366;
+        else
+             days+=365;
+    }
+
+    for(i=1;i<mm;i++)
+    {
+        if(i==1 || i==3 || i==5 || i==7 || i==8 || i==10 || i==12)
+           days+=31;
+        else if(i==4 || i==6 || i==9 || i==11)
+           days+=30;
+        else
+        {
+            if(yy%400==0  || (yy%4==0  && yy%100!=0))
+             days+=29;
+            else
+             days+=28;
+        }
+    }
+    days+=dd;
+    switch(days%7)
+    {
+        case 0:
+           printf("The entered day is Sunday");
+           break;
+        case 1:
+           printf("The entered day is Monday");
+           break;
+        case 2:
+           printf("The entered day is Tuesday");
+           break;
+        case 3:
+           printf("The entered day is Wednesday");
+           break;
+        case 4:
+           printf("The entered day is Thursday");
+           break;
+        case 5:
+           printf("The entered day is Friday");
+           break;
+        case 6:
+           printf("The entered day is Saturday");
+           break;
+    }while(days%7<7);
+}
